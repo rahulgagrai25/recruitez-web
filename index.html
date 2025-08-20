@@ -380,12 +380,14 @@
         font-size: 1rem;
         color: var(--dark);
         margin-bottom: 8px;
+        transition: all 0.3s ease;
       }
 
       .floating-card p {
         font-size: 0.9rem;
         color: var(--gray);
         text-align: center;
+        transition: all 0.3s ease;
       }
 
       .card-1 {
@@ -495,6 +497,11 @@
         height: 4px;
         background: var(--accent);
         border-radius: 2px;
+        transition: width 0.3s ease;
+      }
+
+      .section-title:hover h2::after {
+        width: 100px;
       }
 
       .section-title p {
@@ -768,6 +775,7 @@
         margin-top: 50px;
         position: relative;
         z-index: 1;
+        perspective: 1000px;
       }
 
       .pricing-card {
@@ -780,6 +788,7 @@
         overflow: hidden;
         display: flex;
         flex-direction: column;
+        transform-style: preserve-3d;
       }
 
       .pricing-card::before {
@@ -816,12 +825,12 @@
       }
 
       .pricing-card:hover {
-        transform: translateY(-10px);
+        transform: translateY(-10px) rotateY(5deg);
         box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
       }
 
       .pricing-card.popular:hover {
-        transform: scale(1.05) translateY(-10px);
+        transform: scale(1.05) translateY(-10px) rotateY(5deg);
       }
 
       .pricing-header {
@@ -947,6 +956,7 @@
         display: flex;
         gap: 15px;
         margin-top: 20px;
+        transition: all 0.3s ease;
       }
 
       .social-links a {
@@ -1010,6 +1020,36 @@
       .slide-in-right.visible {
         opacity: 1;
         transform: translateX(0);
+      }
+
+      /* Enhanced button animation */
+      .btn-enhanced {
+        position: relative;
+        overflow: hidden;
+        transition: all 0.3s ease;
+        z-index: 1;
+      }
+
+      .btn-enhanced::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(45deg, var(--primary) 0%, var(--accent) 100%);
+        opacity: 0;
+        transition: opacity 0.3s ease;
+        z-index: -1;
+      }
+
+      .btn-enhanced:hover::before {
+        opacity: 1;
+      }
+
+      .btn-enhanced:hover {
+        transform: translateY(-3px) scale(1.02);
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
       }
 
       /* Responsive Design */
@@ -1125,9 +1165,9 @@
             <a href="index.html">Home</a>
             <a href="for-emplyer2.html">For Employers</a>
             <a href="for-candidate.html">For Candidates</a>
-            <a href="#">Launchpad</a>
-            <a href="#">Pricing</a>
-            <a href="#">About</a>
+            <a href="launch-pad.html">Launchpad</a>
+            <a href="#pricing">Pricing</a>
+            <a href="#about">About</a>
           </div>
           <div class="auth-buttons">
             <a href="#" class="btn btn-outline"
@@ -1158,13 +1198,13 @@
               platform and specialized training programs.
             </p>
             <div class="hero-buttons">
-              <a href="Job Posting.html" class="btn btn-primary"
+              <a href="for-emplyer2.html" class="btn btn-primary btn-enhanced"
                 ><i class="fas fa-briefcase"></i> Post a Job</a
               >
-              <a href="#" class="btn btn-outline"
+              <a href="for-candidate.html" class="btn btn-outline"
                 ><i class="fas fa-search"></i> Find a Job</a
               >
-              <a href="#" class="btn btn-accent"
+              <a href="launch-pad.html" class="btn btn-accent"
                 ><i class="fas fa-rocket"></i> Join Launchpad</a
               >
             </div>
@@ -1256,7 +1296,7 @@
               <li>Interview preparation</li>
               <li>Direct placement opportunities</li>
             </ul>
-            <a href="#" class="btn btn-accent"
+            <a href="launch-pad.html" class="btn btn-accent btn-enhanced"
               ><i class="fas fa-info-circle"></i> Learn More</a
             >
           </div>
@@ -1287,7 +1327,7 @@
     </section>
 
     <!-- Pricing Section -->
-    <section class="pricing">
+    <section class="pricing" id="pricing">
       <div class="container">
         <div class="section-title fade-in">
           <h2>Flexible Pricing Plans</h2>
@@ -1307,7 +1347,7 @@
               <li>Email Support</li>
             </ul>
             <div class="pricing-cta">
-              <a href="#" class="btn btn-outline">Get Started</a>
+              <a href="#" class="btn btn-outline btn-enhanced">Get Started</a>
             </div>
           </div>
           <div class="pricing-card popular fade-in">
@@ -1324,7 +1364,7 @@
               <li>Customized Reports</li>
             </ul>
             <div class="pricing-cta">
-              <a href="#" class="btn btn-primary">Get Started</a>
+              <a href="#" class="btn btn-primary btn-enhanced">Get Started</a>
             </div>
           </div>
           <div class="pricing-card fade-in">
@@ -1341,7 +1381,7 @@
               <li>Advanced Analytics</li>
             </ul>
             <div class="pricing-cta">
-              <a href="#" class="btn btn-outline">Get Started</a>
+              <a href="#" class="btn btn-outline btn-enhanced">Get Started</a>
             </div>
           </div>
         </div>
@@ -1349,7 +1389,7 @@
     </section>
 
     <!-- Footer -->
-    <footer>
+    <footer id="about">
       <div class="container">
         <div class="footer-content">
           <div class="footer-column">
@@ -1380,15 +1420,17 @@
             <h3>For Employers</h3>
             <ul class="footer-links">
               <li>
-                <a href="#"><i class="fas fa-chevron-right"></i> Post a Job</a>
+                <a href="for-emplyer2.html"
+                  ><i class="fas fa-chevron-right"></i> Post a Job</a
+                >
               </li>
               <li>
-                <a href="#"
+                <a href="for-emplyer2.html"
                   ><i class="fas fa-chevron-right"></i> Search Candidates</a
                 >
               </li>
               <li>
-                <a href="#"
+                <a href="#pricing"
                   ><i class="fas fa-chevron-right"></i> Pricing Plans</a
                 >
               </li>
@@ -1403,20 +1445,22 @@
             <h3>For Candidates</h3>
             <ul class="footer-links">
               <li>
-                <a href="#"><i class="fas fa-chevron-right"></i> Find Jobs</a>
+                <a href="for-candidate.html"
+                  ><i class="fas fa-chevron-right"></i> Find Jobs</a
+                >
               </li>
               <li>
-                <a href="#"
+                <a href="for-candidate.html"
                   ><i class="fas fa-chevron-right"></i> Create Profile</a
                 >
               </li>
               <li>
-                <a href="#"
+                <a href="for-candidate.html"
                   ><i class="fas fa-chevron-right"></i> Career Resources</a
                 >
               </li>
               <li>
-                <a href="#"
+                <a href="for-candidate.html"
                   ><i class="fas fa-chevron-right"></i> Resume Builder</a
                 >
               </li>
@@ -1426,18 +1470,24 @@
             <h3>Launchpad</h3>
             <ul class="footer-links">
               <li>
-                <a href="#"
+                <a href="launch-pad.html"
                   ><i class="fas fa-chevron-right"></i> Program Overview</a
                 >
               </li>
               <li>
-                <a href="#"><i class="fas fa-chevron-right"></i> Courses</a>
+                <a href="launch-pad.html"
+                  ><i class="fas fa-chevron-right"></i> Courses</a
+                >
               </li>
               <li>
-                <a href="#"><i class="fas fa-chevron-right"></i> Mentorship</a>
+                <a href="launch-pad.html"
+                  ><i class="fas fa-chevron-right"></i> Mentorship</a
+                >
               </li>
               <li>
-                <a href="#"><i class="fas fa-chevron-right"></i> Placement</a>
+                <a href="launch-pad.html"
+                  ><i class="fas fa-chevron-right"></i> Placement</a
+                >
               </li>
             </ul>
           </div>
